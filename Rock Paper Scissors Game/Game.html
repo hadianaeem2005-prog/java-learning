@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+      <h1>Rock Paper Scissors</h1>
+      <div class="container">
+        <img src="rock.jpeg" alt="rock" id="rock">
+        <img src="paper.jpeg" alt="paper" id="paper">
+        <img src="scissors.jpg" alt="scissors" id="scissors">
+      </div>
+
+      <div class="scores">
+        <div id="user" class="onhover">
+            <p id="user-update">0</p>
+            <p>You</p>
+        </div>
+        <div id="comp" class="onhover">
+            <p id="comp-update">0</p>
+            <p>Computer</p>
+        </div>
+      </div>
+
+
+      <div class="message">
+        <p id="messagepara">Pick your move</p>
+      </div>
+
+
+      <script>
+  let user_score=0;
+  let comp_score=0;
+  let comp_ans;
+  let paragraph=document.querySelector('#messagepara');
+  let rock_btn=document.getElementById('rock');
+  let paper_btn=document.getElementById('paper');
+  let scissors_btn=document.getElementById('scissors');
+  let user_display=document.getElementById('user-update');
+  let comp_display=document.getElementById('comp-update');
+
+
+
+let comp_answer=function(){
+   const arr=["rock","paper","scissors"];
+
+  comp_ans=arr[Math.floor(Math.random()*3)];
+
+  return comp_ans;
+
+};
+
+
+let game=true;
+
+let playgame=function(userchoice)
+{
+  if(!game){
+    return
+  }
+  let computerchoice=comp_answer();
+ 
+  
+  
+  if(userchoice===computerchoice)
+{
+  paragraph.textContent="It is a tie";
+}
+else if((userchoice==="rock" && computerchoice==="scissors") ||
+ (userchoice==="paper" && computerchoice==="rock") || (userchoice==="scissors" && computerchoice==="paper"))
+{
+  paragraph.textContent=`You won!${userchoice} beats ${computerchoice}`;
+  user_score++;
+  user_display.textContent=user_score;
+}
+else{
+  paragraph.textContent=`You lose!${computerchoice} beats ${userchoice}`;
+  comp_score++;
+  comp_display.textContent=comp_score;
+}
+
+let winning_no=5;
+if(user_score===winning_no){
+  paragraph.textContent="Congratulations! You have won the game";
+  paragraph.style.backgroundColor="green";
+  game=false;
+}else if(comp_score===winning_no){
+  paragraph.textContent-"Computer won";
+  paragraph.style.backgroundColor="red";
+  game=false;
+}
+
+}
+
+rock_btn.addEventListener('click',()=>{
+  playgame("rock")
+})
+paper_btn.addEventListener('click',()=>{
+  playgame("paper")
+})
+scissors_btn.addEventListener('click',()=>{
+  playgame("scissors")
+})
+
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+<body>
+    <h1>Javascript Learning</h1>
+    <button id="stop">Stop</button>
+    <script>
+        setInterval(function(){
+            console.log('hello world');
+            
+        },2000)
+        let h1=document.querySelector('h1');
+        let hello=setTimeout(()=>{
+          h1.innerHTML="Best learning";
+
+        },2000);
+
+        document.querySelector('#stop').addEventListener('click',()=>{
+          clearTimeout(hello)
+        })
+
+
+    </script>
+</body>
+</html>

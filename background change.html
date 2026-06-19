@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change color on click</title>
+</head>
+<style>
+    body{
+        background-color: #F69D39;
+        color: white;
+        text-align: center; 
+        margin-top: 200px; 
+    }
+    h1{
+
+        font-size: 45px;
+    }
+    p{
+        font-size: 25px;
+    }
+    button{
+        height: 40px;
+        width: 200px;
+        border: 3px solid blue;
+        border-radius: 20px;
+    }
+</style>
+<body>
+    <h1>Change the color of the background</h1>
+    <p>On clicking the "Start" the background color start to change <br>On "Stop" it will retai the last color</p>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+
+    <script>
+        let random_color=function(){
+        const hex="0123456789ABCDEF";
+        let color='#';
+        for(let i=0; i<6; i++)
+    {
+        color+=hex[Math.floor(Math.random()*16)]
+    }
+    return color;
+    }  ;
+
+let intervalid;
+    const startchangingcolor=function(){
+         function changeBG(){
+            document.body.style.backgroundColor=random_color();
+          }
+          if(!intervalid)
+         { intervalid=setInterval(changeBG,1000)}
+         
+    };
+
+    
+    const stopchangingcolor=function(){
+        clearInterval(intervalid)
+        intervalid=null;
+        };
+
+
+
+    document.querySelector('#start').addEventListener('click', startchangingcolor)
+
+     document.querySelector('#stop').addEventListener('click', stopchangingcolor)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="100px" height="100px" id="deer" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQewL19mDQIuwUrs0cJ0WxFocIJN9uXdhacvA&s" alt="deers"></li>
+
+            <li><img width="100px" height="100px" id="lion" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ArTXgoAfBDQw3UGrwNvdQgg3lEjzIAJ6QQ&s" alt="lion"></li>
+
+            <li><img width="100px " height="100px" id="tiger" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE7qjXvzX0T--7cCogC6yAB8YCjjlbP2ROow&s" alt="tiger"></li>
+
+            <li><img width="100px" height="100px" id="owl" src="https://cdn.britannica.com/86/34386-050-25B31B35/Great-horned-owl.jpg" alt="owl"></li>
+
+            <li><a href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    document.getElementById('images').addEventListener('click',function()
+{
+    console.log('You clicked imside ul')
+})
+ document.getElementById('owl').addEventListener('click',function(e)
+{
+    console.log('You clicked on owl')
+    e.stopPropagation();
+})
+
+   let ul= document.getElementById('images');
+   ul.addEventListener('click',function(e)
+{
+    if(e.target.tagName==="IMG")
+{
+let removeit=e.target.parentNode;
+    removeit.remove();
+}
+    
+})
+</script>
+</html>
